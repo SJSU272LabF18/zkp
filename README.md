@@ -1,4 +1,5 @@
-# Project-Team-24
+# Project-Team-24 none approved, here is what I am giving you to explore and submit a practical use case of ZKP
+Read this: https://zkp.science/
 
 ### Student Names:
   * Amit Bharadia
