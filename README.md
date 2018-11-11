@@ -22,7 +22,7 @@ will submit their identity proof/supporting document to the system.
 4. Prover's kit will create an encrypted proof. (In first case it will be a valid passport ID and in second cases
 it will be confirmation of having age greater than 18 or so.)
 5. Verifier's kit will verify the encrypted proof with the help of public key. It will output the confirmation.
-6. This way John or Karen can submit their proof of identity without revealing extra information.
+6. This way John or Karen can submit their proof of identity without revealing any information.
 
 We will try to implement a generic system which will create verifier's and prover's kit dynamically.
 For example, if user wants to create a kit in order to prove his bank balance, then he will submit his balance
