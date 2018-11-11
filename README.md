@@ -2,7 +2,7 @@
 
 # Idea: Zero knowledge proof authentication for various usecases (Age Confirmation, Passport ID verification, Bank Balance verification)
 
-### Current Situation:  
+### Current Situation: (The problem)
 
 * Consider following cases:
 1. John is travelling to USA and at immigration check, an officer asks him his passport for verification.
@@ -13,7 +13,7 @@ Driving license has her address on it, which she doesn't want to expose. But she
 
 In both the cases, there is an unnecessary leak of information. Currently, there is no concrete system to overcome this.
 
-### Proposed methodology:
+### Proposed methodology: (Solution)
 
 1. Zero knowledge proof (ZKP) is a technology/method that we can use to solve this problem. In ZKP, prover proves his statement or in our case his identity to verifier without revealing it.
 2. So our solution goes like this, there will be a centralized trustworthy system. The prover (John/Karen),
@@ -32,7 +32,12 @@ and the system will create his kit (prover's kit) for him. On the same line, ver
 
 # Idea: Sustainability App (Idea is taken from Professor Ranjan's blog)
 
-You notice everyday in Facebook, someone posts a nice clever idea to recycle a plastic bottle or cardboard box to make something  new and usable. Why not develop a platform where these ideas are posted and rated by the users. Ideas can be searched by various facets and can provide steps and may link a YouTube video. The novelty and innovation is to provide easy way to share ideas and encourage users to make them. App should also highlight the cost benefits of doing  it.
+# Current Situation: (The Problem)
+* You notice everyday in Facebook, or any social media, someone posts a nice clever idea to recycle a plastic bottle or cardboard box to make something  new and usable. But only few people see this idea, they like it and that is it. It does not reach to all community, and because of that many such good ideas go in vain.
+
+# Proposed Methodology: (Solution)
+
+* Why not develop a platform where these ideas are posted and rated by the users. Ideas can be searched by various facets and can provide steps and may link a YouTube video. The novelty and innovation is to provide easy way to share ideas and encourage users to make them. App should also highlight the cost benefits of doing  it.
 
 # Project-Team-24 none approved, here is what I am giving you to explore and submit a practical use case of ZKP
 Read this: https://zkp.science/
