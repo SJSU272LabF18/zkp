@@ -15,7 +15,7 @@ In both the cases, there is an unnecessary leak of information. Currently, there
 
 ### Proposed methodology: (Solution)
 
-1. Zero knowledge proof (ZKP) is a technology/method that we can use to solve this problem. In ZKP, prover proves his statement or in our case his identity to verifier without revealing it.
+1. Zero knowledge proof (ZKP) is an approach/method that we can use to solve this problem. In ZKP, prover proves his statement or in our case his identity to verifier without revealing it.
 2. So our solution goes like this, there will be a centralized trustworthy system. The prover (John/Karen),
 will submit their identity proof/supporting document to the system.
 3. It will have 2 kits for that document. One will be prover's kit and other will be verifier's kit. Kit is nothing but a program which runs on ZKP algorithm and creates encrypted proof for the document. This proof won't contain any kind of direct value of the original document. So there is no risk involved.
