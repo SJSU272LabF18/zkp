@@ -5,7 +5,7 @@
 ### Current Situation: (The problem)
 
 * Consider following cases:
-1. John is travelling to USA and at immigration check, an officer asks him his passport for verification.
+1. John is travelling to USA, and at immigration check an officer asks him his passport for verification.
 He doesn't trust the officer and moreover his passport contains his nationality, home address, travel history which
 he doesn't want to reveal, but he still has to provide a proof of identity.
 2. Karen wants entry in a bar which requires proof of age. The bouncer standing at gate asks Karen her Driving License.
