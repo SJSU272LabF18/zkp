@@ -30,7 +30,7 @@ and the system will create his kit (prover's kit) for him. On the same line, ver
 
 # Idea 2 (Outside ZKP):
 
-#Idea: Sustainability App (Idea is taken from Professor Ranjan's blog)
+# Idea: Sustainability App (Idea is taken from Professor Ranjan's blog)
 
 You notice everyday in Facebook, someone posts a nice clever idea to recycle a plastic bottle or cardboard box to make something  new and usable. Why not develop a platform where these ideas are posted and rated by the users. Ideas can be searched by various facets and can provide steps and may link a YouTube video. The novelty and innovation is to provide easy way to share ideas and encourage users to make them. App should also highlight the cost benefits of doing  it.
 
