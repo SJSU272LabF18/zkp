@@ -1,6 +1,6 @@
 # Project-Team-24 (New Idea on Zero Knowledge Proof)
 
-# Idea: Zero knowledge proof authentication for various usecases (Age Confirmation, Passport ID verification, Bank Balance verification)
+# Idea: Zero knowledge proof authentication for various usecases (Age Confirmation, Bank Balance verification)
 
 ### Current Situation: (The problem)
 
