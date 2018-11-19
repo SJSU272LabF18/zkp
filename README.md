@@ -1,6 +1,15 @@
-# Project-Team-24 (New Idea on Zero Knowledge Proof)
+# Project-Team-24
+
+### Student Names:
+  * Amit Bharadia
+  * Nitish Joshi
+  * Rohan Kamat
+  * Shubham Sawant
+
+### Team Name: Code Monks
 
 # Idea: Zero knowledge proof authentication for various usecases (Age Confirmation, Bank Balance verification)
+* https://zkp.science/
 
 ### Current Situation: (The problem)
 
@@ -27,39 +36,3 @@ it will be confirmation of having age greater than 18 or so.)
 We will try to implement a generic system which will create verifier's and prover's kit dynamically.
 For example, if user wants to create a kit in order to prove his bank balance, then he will submit his balance
 and the system will create his kit (prover's kit) for him. On the same line, verifier's kit will be generated.
-
-# Idea 2 (Outside ZKP):
-
-# Idea: Sustainability App (Idea is taken from Professor Ranjan's blog)
-
-### Current Situation: (The Problem)
-* You notice everyday in Facebook, or any social media, someone posts a nice clever idea to recycle a plastic bottle or cardboard box to make something  new and usable. But only few people see this idea, they like it and that is it. It does not reach to all community, and because of that many such good ideas go in vain.
-
-### Proposed Methodology: (Solution)
-
-* Why not develop a platform where these ideas are posted and rated by the users. Ideas can be searched by various facets and can provide steps and may link a YouTube video. The novelty and innovation is to provide easy way to share ideas and encourage users to make them. App should also highlight the cost benefits of doing  it.
-
-# Project-Team-24 none approved, here is what I am giving you to explore and submit a practical use case of ZKP
-Read this: https://zkp.science/
-
-### Student Names:
-  * Amit Bharadia
-  * Nitish Joshi
-  * Rohan Kamat
-  * Shubham Sawant
-
-### Team Name: Code Monks
-
-### Project Idea #1:
-  * Project title: **Traffic Accident Alert and Analytics System**
-  * Project description:
-    Features real time streaming and analysis of data, accompanied with alert notification to the users.
-  * Proposed methodology/ resources, etc:
-    Read and analyze real time traffic accident data fetched from the control rooms. Provide an alert system for the user, notifying them of major accidents. Provide analytics and comparisons on historical and real time data feed of major accidents with respect to socio-economic factors.
-
-### Project Idea #2:
-  * Project title: **Disaster Recovery Assistant**
-  * Project description:
-    A chat bot to assist disaster struck victims. Assist with nearest safehouses such as medical services, food supplies, provide disaster information, announcements, available public transport, alert to response teams, traffic conditions, etc.
-  * Proposed methodology/ resources, etc:
-    Create a web application in the form of a chatbot using the IBM Bluemix service to provide assistance to the user during a disaster. The user can interact with the chatbot to quickly gain information about the current situation including the whereabouts of various safehouses.
