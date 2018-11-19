@@ -8,7 +8,7 @@
 
 ### Team Name: Code Monks
 
-# Idea: Zero knowledge proof authentication for various usecases (Age Confirmation, Bank Balance verification)
+### Idea: Zero knowledge proof authentication for various usecases (Age Confirmation, Bank Balance verification)
 * https://zkp.science/
 
 ### Current Situation: (The problem)
