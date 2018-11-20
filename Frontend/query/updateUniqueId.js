@@ -1,13 +1,9 @@
 var mysql = require("mysql");
 var bcrypt = require("bcryptjs");
-var salt = bcrypt.genSaltSync(10);
 var pool = require("../db/index.js");
 
-function createUser(user, callback) {
+function setUniqueId(user, callback) {
   console.log("User details:" + JSON.stringify(user));
-  if (user.password) {
-    user.hashed_password = bcrypt.hashSync(user.password, salt);
-  }
   var queryString = getQuery(user);
 
   console.log("Query:" + queryString);
@@ -31,14 +27,11 @@ function createUser(user, callback) {
 
 var getQuery = user => {
   let queryString =
-    "Insert into xyz(username,password,type) values ( " +
-    mysql.escape(user.username) +
-    " , " +
-    mysql.escape(user.hashed_password) +
-    " , " +
-    mysql.escape(user.type) +
-    ")";
+    "Update xyz SET unique_doc_id =" +
+    mysql.escape(user.unique_doc_id) +
+    " WHERE id=" +
+    mysql.escape(user.id);
   return queryString;
 };
 
-exports.createUser = createUser;
+exports.setUniqueId = setUniqueId;

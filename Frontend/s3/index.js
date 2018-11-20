@@ -3,6 +3,7 @@ const aws = require("aws-sdk");
 const multer = require("multer");
 const uniqid = require("uniqid");
 var CONST = require("../const");
+var update = require("../query/updateUniqueId");
 
 aws.config.update({
   secretAccessKey: CONST.awsS3Key,
@@ -22,7 +23,18 @@ const upload = multer({
       uniqueId = uniqid();
       var filename = uniqueId + "_" + req.body.docType + "_" + Date.now();
       console.log("Filename:" + filename);
+      var user = {};
 
+      user.id = req.session.user.id;
+      user.unique_doc_id = uniqueId;
+      console.log("User" + user);
+      update.setUniqueId(user, (err, result) => {
+        if (err) {
+          console.log("Error occured");
+        } else {
+          console.log("updated uniqueid successfully");
+        }
+      });
       cb(null, filename); //use Date.now() for unique file keys
     }
   })

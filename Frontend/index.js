@@ -28,9 +28,12 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
   if (req.session.user) {
-    res.render("proverDashboard");
+    if (req.session.user.type.toUpperCase() == "PROVER")
+      res.render("proverDashboard");
+    else if (req.session.user.type.toUpperCase() == "VERIFIER")
+      res.render("verifiersDashboard");
   } else {
-    res.render("signup");
+    res.render("login");
   }
 });
 
@@ -67,8 +70,17 @@ app.post("/login", (req, res) => {
         res.end("Error occured");
       } else {
         console.log("Result :" + JSON.stringify(result));
-        req.session.user = { username: result.username };
-        res.render("proverDashboard");
+        req.session.user = {
+          username: result.username,
+          id: result.id,
+          type: result.type
+        };
+        console.log(" type:" + result.type);
+        if (result.type.toUpperCase() == "PROVER")
+          res.render("proverDashboard");
+        else if (result.type.toUpperCase() == "VERIFIER")
+          res.render("verifiersDashboard");
+
         res.end("Successful login");
       }
       console.log(
@@ -79,7 +91,6 @@ app.post("/login", (req, res) => {
 });
 
 ///////////////////File upload/////////////////////////
-//Setup for Aws S3
 
 app.post("/submit-document", upload.single("file"), (req, res) => {
   console.log(
@@ -94,9 +105,9 @@ app.post("/submit-document", upload.single("file"), (req, res) => {
   }
   console.log("Unique ID :" + uniqueId);
 
-  ////////////////////Use this unique id to send request to server///////////////////////
+  ////////////////////Use this unique id to send request to JAVA server///////////////////////
 
-  ///////////////////////////////////////////
+  ////////////////////END///////////////////////
   console.log(
     "============================Out of the rest request document ====================="
   );
@@ -104,8 +115,35 @@ app.post("/submit-document", upload.single("file"), (req, res) => {
   res.render("uniqueIdGen", { uniqueId: uniqueId });
   res.end();
 });
+///////////////////End of file upload/////////////////////////
 
-///////////////////File upload/////////////////////////
+///////////////////Verification/////////////////////////
+
+app.post("/verify", (req, res) => {
+  console.log(
+    "============================In of the rest request for verifiction ====================="
+  );
+  console.log("Request body:" + JSON.stringify(req.body));
+
+  ////////////////////Use this unique id to send request to JAVA server///////////////////////
+
+  ////////////////////END///////////////////////
+  console.log(
+    "============================Out of the rest request verifiction ====================="
+  );
+
+  res.end("DONE");
+});
+///////////////////End of Verification/////////////////////////
+
+app.get("/signupPage", function(req, res) {
+  res.render("signup");
+});
+
+app.get("/loginPage", function(req, res) {
+  req.session.user = undefined;
+  res.render("login");
+});
 
 app.listen(CONST.PORT, () => {
   console.log("Server is up at " + CONST.PORT + "...");
