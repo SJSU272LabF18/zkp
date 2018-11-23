@@ -19,10 +19,12 @@ public class Upload {
 
     String clientRegion = "US West (Oregon)";
     String bucketName = "cmpe272proverbucket";
+    String accessKey = Config.getInstance().getProperty("accesskey");
+    String secretKey = Config.getInstance().getProperty("secretkey");
 
     public void uploadTheFile() throws IOException {
 
-        AWSCredentials credentials = new BasicAWSCredentials("AKIAICM5BAL7NU3I25SA", "GbLFj6/RAE0BmkC+UaqizsuEu8HiapSGFOSAqzZO");
+        AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
         AWSCredentialsProvider credentialsProvider = new AWSStaticCredentialsProvider(credentials);
 
