@@ -21,8 +21,13 @@ public class Upload {
     String bucketName = "cmpe272proverbucket";
     String accessKey = Config.getInstance().getProperty("accesskey");
     String secretKey = Config.getInstance().getProperty("secretkey");
+    String uploadLocation = Config.getInstance().getProperty("upload.location");
 
-    public void uploadTheFile() throws IOException {
+    public void uploadTheFile(String fileName) throws IOException {
+
+        String newFileName = fileName.substring(0, fileName.length()-4);
+
+        System.out.println("The file to be uploaded is:" + newFileName);
 
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
@@ -34,9 +39,9 @@ public class Upload {
                     .withCredentials(credentialsProvider)
                     .build();
 
-            String fileName = Config.getInstance().getProperty("ttpmessage.file.name");
-            s3Client.putObject(new PutObjectRequest(bucketName, "Shubham_Sawant_Proof.data",
-                    new File(fileName))
+            String rangeProofExtension = Config.getInstance().getProperty("rangeProofExtension");
+            s3Client.putObject(new PutObjectRequest(bucketName, newFileName + rangeProofExtension,
+                    new File(uploadLocation + newFileName + rangeProofExtension))
                     .withCannedAcl(CannedAccessControlList.PublicRead));
         }
         catch (Exception e) {

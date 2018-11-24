@@ -1,22 +1,3 @@
-/*
- * Copyright 2017 ING Bank N.V.
- * This file is part of the go-ethereum library.
- *
- * The go-ethereum library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * The go-ethereum library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
- *
- */
-
 package com.kit.prover.zeroknowledge.prover;
 
 import com.kit.prover.zeroknowledge.TTPGenerator;
@@ -30,12 +11,16 @@ import java.math.BigInteger;
  */
 public class TTPDemo {
 
-    public void generateTrustedMessage(BigInteger x) {
+    public void generateTrustedMessage(BigInteger x, String fileName) {
 
+        String newFileName = fileName.substring(0, fileName.length()-4);
+
+        System.out.println("New file in TTPDemo is: "+newFileName);
         TTPMessage message = TTPGenerator.generateTTPMessage(x);
 
-        String fileName = Config.getInstance().getProperty("ttpmessage.file.name");
-        InputUtils.saveObject(fileName, message);
+        String filePath = Config.getInstance().getProperty("upload.location");
+        String rangeProofExtension = Config.getInstance().getProperty("rangeProofExtension");
+        InputUtils.saveObject(filePath + newFileName + rangeProofExtension, message);
 
     }
 }

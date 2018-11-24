@@ -6,9 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Prover {
+public class Zkp_user {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String username;
@@ -20,6 +20,16 @@ public class Prover {
     private String unique_doc_id;
 
     private String doc_type;
+
+    private String doc_name;
+
+    public String getDoc_name() {
+        return doc_name;
+    }
+
+    public void setDoc_name(String doc_name) {
+        this.doc_name = doc_name;
+    }
 
     public Integer getId() {
         return id;
@@ -69,61 +79,3 @@ public class Prover {
         this.doc_type = doc_type;
     }
 }
-
-/*
-@Entity
-public class Prover {
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private String uid;
-
-    private String name;
-
-    private String email;
-
-    private String password;
-
-    private String document_type;
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDocument_type() {
-        return document_type;
-    }
-
-    public void setDocument_type(String document_type) {
-        this.document_type = document_type;
-    }
-}
-*/
