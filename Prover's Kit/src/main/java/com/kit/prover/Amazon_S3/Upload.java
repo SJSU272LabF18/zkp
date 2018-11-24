@@ -17,8 +17,7 @@ import java.io.IOException;
 
 public class Upload {
 
-    String clientRegion = "US West (Oregon)";
-    String bucketName = "cmpe272proverbucket";
+    String bucketName = Config.getInstance().getProperty("verifierBucket");
     String accessKey = Config.getInstance().getProperty("accesskey");
     String secretKey = Config.getInstance().getProperty("secretkey");
     String uploadLocation = Config.getInstance().getProperty("upload.location");

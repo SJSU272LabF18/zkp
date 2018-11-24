@@ -18,8 +18,7 @@ import java.nio.file.Files;
 
 public class Download {
 
-    String clientRegion = "US West (Oregon)";
-    String bucketName = "cmpe272proverbucket";
+    String bucketName = Config.getInstance().getProperty("proverBucket");
     String accessKey = Config.getInstance().getProperty("accesskey");
     String secretKey = Config.getInstance().getProperty("secretkey");
     String downloadLocation = Config.getInstance().getProperty("download.location");
