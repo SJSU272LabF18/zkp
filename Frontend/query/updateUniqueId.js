@@ -27,8 +27,12 @@ function setUniqueId(user, callback) {
 
 var getQuery = user => {
   let queryString =
-    "Update xyz SET unique_doc_id =" +
+    "Update zkp_user SET unique_doc_id =" +
     mysql.escape(user.unique_doc_id) +
+    " ,  doc_type =" +
+    mysql.escape(user.doc_type) +
+    " ,  doc_name =" +
+    mysql.escape(user.doc_name) +
     " WHERE id=" +
     mysql.escape(user.id);
   return queryString;

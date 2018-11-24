@@ -27,6 +27,9 @@ const upload = multer({
 
       user.id = req.session.user.id;
       user.unique_doc_id = uniqueId;
+      user.doc_type=req.body.docType;
+      user.doc_name=filename;
+
       console.log("User" + user);
       update.setUniqueId(user, (err, result) => {
         if (err) {

@@ -31,7 +31,7 @@ function createUser(user, callback) {
 
 var getQuery = user => {
   let queryString =
-    "Insert into xyz(username,password,type) values ( " +
+    "Insert into zkp_user(username,password,type) values ( " +
     mysql.escape(user.username) +
     " , " +
     mysql.escape(user.hashed_password) +

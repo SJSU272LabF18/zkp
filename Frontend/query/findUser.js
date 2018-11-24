@@ -6,7 +6,7 @@ var isValidUser = (user, callback) => {
   console.log("User details:" + JSON.stringify(user));
 
   let queryString =
-    "select * from xyz where username= " + mysql.escape(user.username);
+    "select * from zkp_user where username= " + mysql.escape(user.username);
   console.log(queryString);
   pool.getConnection((err, con) => {
     if (err) {
