@@ -18,10 +18,10 @@ import java.nio.file.Files;
 
 public class Download {
 
-    String clientRegion = "US West (Oregon)";
-    String bucketName = "cmpe272proverbucket";
+    String bucketName = Config.getInstance().getProperty("proverBucket");
     String accessKey = Config.getInstance().getProperty("accesskey");
     String secretKey = Config.getInstance().getProperty("secretkey");
+    String downloadLocation = Config.getInstance().getProperty("download.location");
     //String key = "Confirmation_letter.pdf";
 
     public void getTheFile(String fileName) throws IOException {
@@ -41,7 +41,7 @@ public class Download {
             S3Object fetchFile = s3Client.getObject(new GetObjectRequest(bucketName, key));
             final BufferedInputStream i = new BufferedInputStream(fetchFile.getObjectContent());
             InputStream objectData = fetchFile.getObjectContent();
-            Files.copy(objectData, new File("D:\\CMPE-272\\Temp Folder\\" + key).toPath());
+            Files.copy(objectData, new File(downloadLocation + key).toPath());
             objectData.close();
         } catch (AmazonServiceException e) {
             // The call was transmitted successfully, but Amazon S3 couldn't process
