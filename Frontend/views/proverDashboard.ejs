@@ -35,13 +35,6 @@
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item bg-light">
-              <!--
-                <a
-                  class="nav-link text-primary"
-                  href="http://127.0.0.1:8000/signup"
-                  >Register</a
-                >
-              -->
               <form
                 class="form-signin"
                 action="http://127.0.0.1:8000/loginPage"
@@ -67,9 +60,9 @@
             >
               <div class="form-group">
                 <select name="docType" class="form-control">
-                  <option>Age Proof</option>
-                  <option>Driving License</option>
-                  <option>Bank</option>
+                  <option value="age_proof">Age Proof</option>
+                  <option value="driving_proof">Driving License</option>
+                  <option value="balance_proof">Bank</option>
                 </select>
               </div>
               <div class="form-group pb-2">

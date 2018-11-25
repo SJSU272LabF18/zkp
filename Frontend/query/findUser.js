@@ -28,6 +28,8 @@ var isValidUser = (user, callback) => {
               console.log("password did not match");
               return callback("Password did not match", null);
             }
+          }else{
+            callback("No such user present", null);
           }
         }
       });

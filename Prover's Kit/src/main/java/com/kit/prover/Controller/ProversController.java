@@ -35,7 +35,7 @@ public class ProversController {
         Zkp_user prover = null;
         for (Zkp_user p: provers) {
             System.out.println(p.getDoc_name());
-            if(p.getUnique_doc_id().equalsIgnoreCase(uid)) {
+            if( p.getUnique_doc_id()!=null && p.getUnique_doc_id().equalsIgnoreCase(uid) ) {
                 prover = p;
                 break;
             }
