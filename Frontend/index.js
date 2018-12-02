@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
     else if (req.session.user.type.toUpperCase() == "VERIFIER")
       res.render("verifiersDashboard");
   } else {
-    res.render("login");
+    res.render("home");
   }
 });
 
@@ -116,6 +116,8 @@ app.post("/submit-document", upload.single("file"), (req, res) => {
   res.end();
 });
 ///////////////////End of file upload/////////////////////////
+
+
 
 ///////////////////Verification/////////////////////////
 

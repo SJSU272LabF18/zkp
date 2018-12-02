@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
       <div class="container">
         <button
           class="navbar-toggler navbar-toggler-right border-0"
@@ -27,7 +27,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar12">
           <a class="navbar-brand d-none d-md-block" href="#">
-            <i class="fa d-inline fa-lg fa-circle"></i> <b> ZKP</b>
+            <i class="fa d-inline fa-lg fa-circle"></i> <b> Smart Proof</b>
           </a>
           <ul class="navbar-nav mx-auto">
             <li class="nav-item"><a class="nav-link" href="#"></a></li>
@@ -40,7 +40,7 @@
                 action="http://127.0.0.1:8000/signupPage"
                 method="get"
               >
-                <button class="nav-link text-primary" type="submit">
+                <button class="btn btn-light" type="submit">
                   Register
                 </button>
               </form>
@@ -49,43 +49,46 @@
         </div>
       </div>
     </nav>
-    <div class="py-5 text-center text-white bg-primary">
-      <div class="container">
+    <div class="container" >
         <div class="row">
-          <div class="p-5 col-lg-6 col-10 mx-auto border">
-            <h1 class="mb-4">Login</h1>
+          <div class="mx-auto col-md-6 col-10 bg-white p-5">
+            <img  class="container-fluid" src="https://cdn-images-1.medium.com/max/800/1*vZ8157z3Z_kR2isA7kxLNg.gif"/>
+            <h1>Welcome back..</h1>
+          </div>
+          <div class="mx-auto col-md-6 col-10 bg-white p-5">
+            <h1 class="mb-4">Log in</h1>
             <form
-              class="form-signin"
-              action="http://127.0.0.1:8000/login"
-              method="post"
-            >
-              <div class="form-group">
+            class="form-signin"
+            action="http://127.0.0.1:8000/login"
+            method="post"
+          >
+              <div class="form-group"> 
+               
                 <input
-                  type="email"
-                  name="username"
-                  class="form-control"
-                  placeholder="Email"
-                  id="form14"
-                />
+                type="email"
+                name="username"
+                class="form-control"
+                placeholder="Email"
+                id="form9"
+              />
               </div>
-              <div class="form-group">
-                <input
+              <div class="form-group mb-3"> 
+                
+                  <input
                   type="password"
                   name="password"
                   class="form-control"
                   placeholder="Password"
                   id="form15"
-                />
-                <small class="form-text text-muted text-right">
-                  <a href="#"> Already have an account?</a>
-                </small>
-              </div>
-              <button type="submit" class="btn btn-light">Submit</button>
+                /> <small class="form-text text-muted text-right">
+                  <a href="#"> Recover password</a>
+                </small> </div> <button type="submit" class="btn btn-secondary">Submit</button>
             </form>
           </div>
         </div>
       </div>
-    </div>
+
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
