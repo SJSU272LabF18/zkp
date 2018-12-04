@@ -5,6 +5,7 @@ var session = require("express-session");
 var CONST = require("./const");
 var userCreation = require("./query/userCreation");
 var validUser = require("./query/findUser");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var { upload } = require("./s3/index");
 var app = express();
 
@@ -39,7 +40,7 @@ app.get("/", (req, res) => {
 
 app.post("/signup", (req, res) => {
   console.log(
-    "============================In of the rest request signup ====================="
+    "============================Inside the rest request signup ====================="
   );
   console.log("Request body:" + JSON.stringify(req.body));
 
@@ -62,7 +63,7 @@ app.post("/login", (req, res) => {
     res.render("proverDashboard");
   } else {
     console.log(
-      "============================In of the rest request login ====================="
+      "============================Inside the rest request login ====================="
     );
     console.log("Request body:" + JSON.stringify(req.body));
     validUser.isValidUser(req.body, (err, result) => {
@@ -107,36 +108,99 @@ app.post("/submit-document", upload.single("file"), (req, res) => {
 
   ////////////////////Use this unique id to send request to JAVA server///////////////////////
 
+  sendCallToBackendProverCallBack(uniqueId, ()=> {
+    res.render("uniqueIdGen", { uniqueId: uniqueId });
+    res.end();
+    console.log(
+      "============================Out of the rest request document ====================="
+    );
+  });
   ////////////////////END///////////////////////
-  console.log(
-    "============================Out of the rest request document ====================="
-  );
-
-  res.render("uniqueIdGen", { uniqueId: uniqueId });
-  res.end();
 });
+
 ///////////////////End of file upload/////////////////////////
 
+function sendCallToBackendProverCallBack(uniqueId, callback) {
+  var xmlhttp = new XMLHttpRequest();
+  //xmlhttp.open("GET", "ec2-13-57-183-171.us-west-1.compute.amazonaws.com/" + "user/" + uniqueId);
+  xmlhttp.open("GET", "http://localhost:8080/" + "user/" + uniqueId);
+  xmlhttp.setRequestHeader("Content-Type", "application/json");
+  xmlhttp.send();
+  xmlhttp.onreadystatechange = function() {
+    console.log("Status is"+this.status);
+    if (this.readyState === 4 && this.status === 200) { //&& this.status === 200
+      console.log("successfully Sent");
+      callback();
+    }
+  }
+}
 
 
 ///////////////////Verification/////////////////////////
 
 app.post("/verify", (req, res) => {
   console.log(
-    "============================In of the rest request for verifiction ====================="
+    "============================Inside of the rest request for verifiction ====================="
   );
   console.log("Request body:" + JSON.stringify(req.body));
 
   ////////////////////Use this unique id to send request to JAVA server///////////////////////
 
-  ////////////////////END///////////////////////
-  console.log(
-    "============================Out of the rest request verifiction ====================="
-  );
+  sendCallToBackendVerifierCallBack(req, (isSuccess)=> {
 
-  res.end("DONE");
+    console.log("IsSuccess is :"+ isSuccess);
+
+    if(isSuccess === "true") {
+      res.end("Successfully Validated");
+      console.log(
+        "============================Out of the rest request verifiction ====================="
+      );
+    }
+    else {
+      res.end("Validation failed");
+      console.log(
+        "============================Out of the rest request verifiction ====================="
+      );
+    }
+  });
+  ////////////////////END///////////////////////
 });
 ///////////////////End of Verification/////////////////////////
+
+function sendCallToBackendVerifierCallBack(req, callback) {
+  var uniqueId = req.body.verification_id;
+  var lowerbound = req.body.lowerbound;
+  var upperbound = req.body.upperbound;
+
+  var jsonToSend = {
+	"lowerBound": lowerbound,
+	"upperBound": upperbound,
+	"uid": uniqueId
+};
+
+  var xmlhttp = new XMLHttpRequest();
+  //xmlhttp.open("GET", "ec2-13-57-183-171.us-west-1.compute.amazonaws.com/" + "user/" + uniqueId);
+
+  xmlhttp.open("POST", "http://localhost:8080/" + "verifier");
+  xmlhttp.setRequestHeader("Content-Type", "application/json");
+  xmlhttp.send(JSON.stringify(jsonToSend));
+
+  xmlhttp.onreadystatechange = function() {
+
+    if (this.readyState === 4) { //&& this.status === 200
+      console.log("Finally here");
+      if(this.status === 200) {
+        console.log("successfully Sent");
+        callback("true");
+      }
+      else {
+        console.log("Error Occurred");
+        callback("false");
+      }
+
+    }
+  }
+}
 
 app.get("/signupPage", function(req, res) {
   res.render("signup");

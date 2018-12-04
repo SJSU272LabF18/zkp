@@ -21,14 +21,18 @@ const upload = multer({
       console.log("req ", JSON.stringify(req.body));
       console.log(file);
       uniqueId = uniqid();
-      var filename = uniqueId + "_" + req.body.docType + "_" + Date.now();
-      console.log("Filename:" + filename);
+      var filenameForDB = uniqueId + "_" + req.body.docType + "_" + Date.now();
+      var fileNameForS3 = uniqueId + "_" + req.body.docType + "_" + Date.now() + ".pdf";
+
+      console.log("filenameForDB:" + filenameForDB);
+      console.log("fileNameForS3:" + fileNameForS3);
+      
       var user = {};
 
       user.id = req.session.user.id;
       user.unique_doc_id = uniqueId;
       user.doc_type=req.body.docType;
-      user.doc_name=filename;
+      user.doc_name=filenameForDB;
 
       console.log("User" + user);
       update.setUniqueId(user, (err, result) => {
@@ -38,7 +42,7 @@ const upload = multer({
           console.log("updated uniqueid successfully");
         }
       });
-      cb(null, filename); //use Date.now() for unique file keys
+      cb(null, fileNameForS3);
     }
   })
 });
