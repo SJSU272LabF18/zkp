@@ -123,7 +123,7 @@ app.post("/submit-document", upload.single("file"), (req, res) => {
 function sendCallToBackendProverCallBack(uniqueId, callback) {
   var xmlhttp = new XMLHttpRequest();
   //xmlhttp.open("GET", "ec2-13-57-183-171.us-west-1.compute.amazonaws.com/" + "user/" + uniqueId);
-  xmlhttp.open("GET", "http://localhost:8080/" + "user/" + uniqueId);
+  xmlhttp.open("GET", "http://ec2-13-57-183-171.us-west-1.compute.amazonaws.com:8080/" + "user/" + uniqueId);
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.send();
   xmlhttp.onreadystatechange = function() {
@@ -181,7 +181,7 @@ function sendCallToBackendVerifierCallBack(req, callback) {
   var xmlhttp = new XMLHttpRequest();
   //xmlhttp.open("GET", "ec2-13-57-183-171.us-west-1.compute.amazonaws.com/" + "user/" + uniqueId);
 
-  xmlhttp.open("POST", "http://localhost:8080/" + "verifier");
+  xmlhttp.open("POST", "http://ec2-13-57-183-171.us-west-1.compute.amazonaws.com:8080/" + "verifier");
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.send(JSON.stringify(jsonToSend));
 
