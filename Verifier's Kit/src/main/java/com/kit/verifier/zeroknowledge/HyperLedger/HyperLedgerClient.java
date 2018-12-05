@@ -16,7 +16,7 @@ public class HyperLedgerClient {
         web3j = Web3j.build(new HttpService(ethereumUrl));
     }
 
-    public static HyperLedgerClient getEthereumClient() {
+    public static HyperLedgerClient getHyperledgerClient() {
         final String hyperLedgerUrl = Config.getInstance().getProperty("hyperledger.url");
         return new HyperLedgerClient(hyperLedgerUrl);
     }
