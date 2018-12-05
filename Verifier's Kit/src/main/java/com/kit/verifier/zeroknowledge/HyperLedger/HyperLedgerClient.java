@@ -11,8 +11,6 @@ import java.util.concurrent.TimeUnit;
 public class HyperLedgerClient {
 
     private final Web3j web3j;
-    private static final BigInteger GAS_LIMIT = BigInteger.valueOf(99999999);
-    private static final BigInteger GAS_PRICE = BigInteger.ONE;
 
     public HyperLedgerClient(final String ethereumUrl) {
         web3j = Web3j.build(new HttpService(ethereumUrl));
@@ -28,7 +26,7 @@ public class HyperLedgerClient {
             Credentials credentials = getCredentials();
 
             System.out.println("Deploying validator, sender = " + getAddress());
-            RangeProofValidator rpv = RangeProofValidator.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT).sendAsync().get(40, TimeUnit.SECONDS);
+            RangeProofValidator rpv = RangeProofValidator.deploy(web3j, credentials).sendAsync().get(40, TimeUnit.SECONDS);
             System.out.println("Deployed validator = " + rpv.getContractAddress());
 
             System.out.println("Calling validate(lowerBound, upperBound, commitment, proof) on validator contract.");
